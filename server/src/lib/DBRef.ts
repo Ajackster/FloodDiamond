@@ -3,8 +3,8 @@ import { Diamond, Supplier } from './interfaces';
 
 const DB_NAME = 'FloodDiamond';
 const MONGO_URL = 'mongodb://localhost:27017';
-const DIAMOND_COLLECTION = 'Diamond';
-const SUPPLIER_COLLECTION = 'Supplier';
+const DIAMOND_COLLECTION = 'diamonds';
+const SUPPLIER_COLLECTION = 'suppliers';
 
 export class DBRef {
   public static db: mongodb.MongoClient;

@@ -12,7 +12,6 @@ export interface Diamond {
 
 export interface Supplier {
   _id: mongodb.ObjectId;
-  managerId: mongodb.ObjectId;
   location: string;
   image: string;
 }
