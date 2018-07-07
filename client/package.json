@@ -4,19 +4,19 @@
   "description": "Client code for create-treg-app",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf dist/ && webpack && cp src/index.html dist/ && cp -R node_modules dist/"
+    "build": "rm -rf dist/ && webpack && cp -R src/fonts dist/ && cp src/index.html dist/ && cp src/index.css dist/ && cp -R node_modules dist/"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/react": "^16.0.31",
     "@types/react-dom": "^16.0.3",
-    "apollo-client-preset": "^1.0.5",
+    "apollo-boost": "^0.1.10",
     "emotion": "^9.2.5",
     "graphql": "^0.12.3",
     "graphql-tag": "^2.6.1",
     "react": "^16.2.0",
-    "react-apollo": "^2.0.4",
+    "react-apollo": "^2.1.9",
     "react-dom": "^16.2.0",
     "react-emotion": "^9.2.5"
   },

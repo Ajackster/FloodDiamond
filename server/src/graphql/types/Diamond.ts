@@ -5,7 +5,7 @@ export const DiamondType = new GraphQLObjectType({
   description: 'Metadata about a certified ethical diamond',
   fields: () => ({
     _id: { type: new GraphQLNonNull(GraphQLString) },
-    supplier: { type: new GraphQLNonNull(GraphQLString) },
+    supplierId: { type: new GraphQLNonNull(GraphQLString) },
     name: { type: GraphQLString },
     carat: { type: GraphQLFloat },
     description: { type: GraphQLString },
