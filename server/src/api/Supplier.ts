@@ -3,19 +3,19 @@ import { Request, Response } from 'express';
 import { DBRef } from '../lib/DBRef';
 
 export async function getSuppliers() {
-  return await DBRef.supplierCollection.find({}).toArray();
+  return await DBRef.suppliersCollection.find({}).toArray();
 }
 
 export async function getSupplier(supplierId: string) {
-  return await DBRef.supplierCollection.findOne({ _id: new mongodb.ObjectId(supplierId) });
+  return await DBRef.suppliersCollection.findOne({ _id: new mongodb.ObjectId(supplierId) });
 }
 
-export async function GetSuppliers(req: Request, res: Response) {
+export async function handleSuppliers(req: Request, res: Response) {
   const suppliers = await getSuppliers();
   res.send(suppliers);
 }
 
-export async function GetSupplier(req: Request, res: Response) {
+export async function handleSupplier(req: Request, res: Response) {
   const supplierId = req.body.id;
   if (!supplierId) {
     res.send(400);

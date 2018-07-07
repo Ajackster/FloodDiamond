@@ -2,7 +2,7 @@ import * as mongodb from 'mongodb';
 
 export interface Diamond {
   _id: mongodb.ObjectId;
-  supplier: mongodb.ObjectId;
+  supplierId: mongodb.ObjectId;
   name: string;
   carat: number;
   description: string;
@@ -18,8 +18,16 @@ export interface Supplier {
   description: string;
 }
 
-export interface Manager {
+export interface Transaction {
+  _id: mongodb.ObjectId;
+  diamondId: mongodb.ObjectId;
+  supplierId: mongodb.ObjectId;
+  userId: mongodb.ObjectId;
+}
+
+export interface User {
   _id: mongodb.ObjectId;
   name: string;
+  username: string;
   password: string;
 }

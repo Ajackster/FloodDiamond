@@ -3,11 +3,11 @@ import { Request, Response } from 'express';
 import { DBRef } from '../lib/DBRef';
 
 export async function getDiamonds() {
-  return await DBRef.diamondCollection.find({}).toArray();
+  return await DBRef.diamondsCollection.find({}).toArray();
 }
 
 export async function getDiamond(diamondId: string) {
-  return await DBRef.diamondCollection.findOne({ _id: new mongodb.ObjectId(diamondId) });
+  return await DBRef.diamondsCollection.findOne({ _id: new mongodb.ObjectId(diamondId) });
 }
 
 export async function handleGetDiamonds(req: Request, res: Response) {
