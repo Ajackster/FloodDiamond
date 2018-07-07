@@ -2,7 +2,6 @@ import * as mongodb from 'mongodb';
 import { Diamond, Supplier } from './interfaces';
 
 const DB_NAME = 'FloodDiamond';
-const MONGO_URL = 'mongodb://localhost:27017';
 const DIAMOND_COLLECTION = 'diamonds';
 const SUPPLIER_COLLECTION = 'suppliers';
 
@@ -13,7 +12,7 @@ export class DBRef {
 }
 
 export function connectToMongo() {
-  mongodb.MongoClient.connect(MONGO_URL, function(err, db) {
+  mongodb.MongoClient.connect(process.env.DB_HOST as any, function(err, db) {
     if (err) throw err;
     DBRef.db = db;
     DBRef.diamondCollection = db.db(DB_NAME).collection(DIAMOND_COLLECTION);
