@@ -12,7 +12,7 @@ export async function getSupplier(supplierId: string) {
 
 export async function GetSuppliers(req: Request, res: Response) {
   const suppliers = await getSuppliers();
-  res.send(JSON.stringify(suppliers));
+  res.send(suppliers);
 }
 
 export async function GetSupplier(req: Request, res: Response) {
@@ -28,5 +28,5 @@ export async function GetSupplier(req: Request, res: Response) {
     return;
   }
 
-  res.send(JSON.stringify(supplier));
+  res.send(supplier);
 }

@@ -12,7 +12,7 @@ export async function getDiamond(diamondId: string) {
 
 export async function handleGetDiamonds(req: Request, res: Response) {
   const diamonds = await getDiamonds();
-  res.send(JSON.stringify(diamonds));
+  res.send(diamonds);
 }
 
 export async function handleGetDiamond(req: Request, res: Response) {
@@ -27,5 +27,5 @@ export async function handleGetDiamond(req: Request, res: Response) {
     res.send(404);
     return;
   }
-  res.send(JSON.stringify(diamond));
+  res.send(diamond);
 }
