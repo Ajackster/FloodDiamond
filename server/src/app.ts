@@ -27,16 +27,16 @@ const app = express();
 app.use(cors());
 
 // Serve static files from the React app
-app.use(express.static(__dirname + '/../client/dist/'));
+app.use(express.static(__dirname + '/../../client/dist/'));
 
 // Allow variables passed through http hody
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-import { GetDiamonds, GetDiamond } from './api/Diamonds';
-app.get('/GetDiamonds', GetDiamonds);
-app.post('/GetDiamond', GetDiamond);
+import { handleGetDiamonds, handleGetDiamond } from './api/Diamonds';
+app.get('/GetDiamonds', handleGetDiamonds);
+app.post('/GetDiamond', handleGetDiamond);
 
 import { GetSuppliers, GetSupplier } from './api/Supplier';
 app.get('/GetSuppliers', GetSuppliers);

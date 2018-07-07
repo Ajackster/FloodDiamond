@@ -1,14 +1,13 @@
 import { GraphQLObjectType } from 'graphql';
-import UserQueries from './UserQueries';
+import { diamonds, diamond } from './DiamondQueries';
 
-// This is the Root Query
-const BrainChildRootQuery = new GraphQLObjectType({
-  name: 'BrainChild',
-  description: "BrainChild Schema Query Root",
+const FloodDiamondRootQuery = new GraphQLObjectType({
+  name: 'FloodDiamond',
+  description: "FloodDiamond Schema Query Root",
   fields: () => ({
-    users: UserQueries.users,
-    user: UserQueries.user,
+    diamonds,
+    diamond,
   })
 });
 
-export default BrainChildRootQuery;
+export default FloodDiamondRootQuery;

@@ -14,6 +14,8 @@ export interface Supplier {
   _id: mongodb.ObjectId;
   location: string;
   image: string;
+  name: string;
+  description: string;
 }
 
 export interface Manager {
