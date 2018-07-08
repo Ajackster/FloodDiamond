@@ -13,6 +13,7 @@
     "@types/react-dom": "^16.0.3",
     "apollo-boost": "^0.1.10",
     "axios": "^0.18.0",
+    "dotenv": "^6.0.0",
     "emotion": "^9.2.5",
     "graphql": "^0.12.3",
     "graphql-tag": "^2.6.1",

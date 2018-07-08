@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const serverUrl = `http://192.168.1.156:8080`;
+const serverUrl = `http://178.128.176.11:8080`;
 
 export async function CreateTransaction(transaction: {
   diamondId: string;
