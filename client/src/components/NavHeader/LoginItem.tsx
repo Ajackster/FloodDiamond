@@ -51,7 +51,7 @@ class LoginItem extends React.Component<LoginItemProps, LoginItemState> {
               active={this.props.activeRoute === Routes.Certificates}
               route={Routes.Certificates}
               text={user.name}
-              onClick={this.props.onNavigationChange}
+              onClick={() => {}}
             /> 
           );
         }}

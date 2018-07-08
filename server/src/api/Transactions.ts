@@ -45,7 +45,7 @@ export async function handleTransaction(req: Request, res: Response) {
     name: user.name,
     supplierName: supplier.name,
     supplierLocation: supplier.location,
-    diamondName: supplier.name,
+    diamondName: diamond.name,
   };
   const certificate = await insertCertificate(certificateInfo);
   res.send({ _id: certificate.insertedId, ...certificateInfo });

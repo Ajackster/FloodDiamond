@@ -23,6 +23,16 @@ export interface Transaction {
   userId: string;
 }
 
+export interface CertificateInfo {
+  _id: string;
+  transactionId: string;
+  userId: string;
+  name: string;
+  supplierName: string;
+  supplierLocation: string;
+  diamondName: string;
+}
+
 export interface User {
   _id: string;
   name: string;

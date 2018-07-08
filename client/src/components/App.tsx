@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-import { Diamond } from '../lib/interfaces';
+import { Diamond, CertificateInfo } from '../lib/interfaces';
 import { Routes } from '../lib/routes';
 import { CreateTransaction } from '../lib/api';
 
@@ -9,6 +9,7 @@ import Footer from './Footer';
 import Welcome from './Welcome';
 import Shop from './Shop';
 import LoginModal from './LoginModal';
+import Certificate from './Certificate';
 
 const Container = styled('div')`
   width: 100%;
@@ -25,12 +26,14 @@ export interface AppProps {
 }
 
 export interface AppState {
+  certData: CertificateInfo | null;
   loginModalOpen: boolean;
   activeRoute: Routes;
   selectedDiamond: Diamond | null;
 }
 
 const defaultState: AppState = {
+  certData: null,
   loginModalOpen: false,
   activeRoute: Routes.Welcome,
   selectedDiamond: null,
@@ -63,6 +66,9 @@ class App extends React.Component<AppProps, AppState> {
       case Routes.Welcome: {
         return <Welcome />;
       };
+      case Routes.Certificate: {
+        return <Certificate certificate={this.state.certData as CertificateInfo} />
+      };
       case Routes.Shop: {
         return (
           <Shop
@@ -83,6 +89,8 @@ class App extends React.Component<AppProps, AppState> {
 
   public componentDidMount() {
     this.initRoute();
+    const userId = localStorage.getItem('user-id');
+    window['userId'] = userId;
   }
 
   private initRoute = () => {
@@ -108,8 +116,9 @@ class App extends React.Component<AppProps, AppState> {
   private onBuyClick = async (diamond: Diamond) => {
     const userId = localStorage.getItem('user-id');
     if (userId) {
-      await CreateTransaction({ diamondId: diamond._id, supplierId: diamond.supplierId, userId });
-      this.setState({ selectedDiamond: diamond, activeRoute: Routes.Certificate });
+      const res = await CreateTransaction({ diamondId: diamond._id, supplierId: diamond.supplierId, userId });
+      console.log(res.data);
+      this.setState({ selectedDiamond: diamond, activeRoute: Routes.Certificate, certData: res.data });
     } else {
       this.setState({ loginModalOpen: true });
     }
