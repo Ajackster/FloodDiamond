@@ -67,14 +67,14 @@ class About extends React.Component<AboutProps> {
   public render() {
     return (
       <Container>
-        <FabriceItemContainer>
-          <Image src={'../images/fabrice.jpg'} />
-          <Description>Fabrice Mulumba <IconLink href={'https://github.com/Fabreeze23'} className={'fab fa-github'} /></Description>
-        </FabriceItemContainer>
         <AndrewItemContainer>
           <Image src={'../images/me.jpg'} />
           <Description>Andrew Jackson <IconLink href={'https://github.com/Ajackster'} className={'fab fa-github'} /></Description>
         </AndrewItemContainer>
+        <FabriceItemContainer>
+          <Image src={'../images/fabrice.jpg'} />
+          <Description>Fabrice Mulumba <IconLink href={'https://github.com/Fabreeze23'} className={'fab fa-github'} /></Description>
+        </FabriceItemContainer>
       </Container>
     );
   }
