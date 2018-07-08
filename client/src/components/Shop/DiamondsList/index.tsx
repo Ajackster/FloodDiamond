@@ -19,7 +19,9 @@ export interface DiamondListItem {
 }
 
 export interface DiamondsListProps extends ChildProps<{}, { diamonds: DiamondListItem[] }> {
+  selectedDiamond: Diamond | null;
   onClick: (diamond: Diamond) => void;
+  onBuyClick: (diamond: Diamond) => void;
 }
 
 export interface DiamondsListState {
@@ -33,7 +35,12 @@ class DiamondsList extends React.Component<DiamondsListProps, DiamondsListState>
         {this.props.data.diamonds.map((diamond) => {
           return (
             <CardSpacing key={diamond._id}>
-              <DiamondCard id={diamond._id} onClick={this.props.onClick} />
+              <DiamondCard
+                id={diamond._id}
+                onClick={this.props.onClick}
+                onBuyClick={this.props.onBuyClick}
+                selectedDiamond={this.props.selectedDiamond}
+              />
             </CardSpacing>
           );
         })}

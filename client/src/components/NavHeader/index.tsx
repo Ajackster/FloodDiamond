@@ -2,10 +2,12 @@ import * as React from 'react';
 import styled from 'react-emotion';
 import { Routes } from '../../lib/routes';
 import NavItem from '../UI/NavItem';
+import LoginItem from './LoginItem';
 
 const Container = styled('div')`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 50px;
   margin-bottom: 5px;
   padding: 0 5px;
@@ -13,21 +15,29 @@ const Container = styled('div')`
 `;
 
 const Logo = styled('div')`
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  border-radius: 10px;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 18px;
   background-color: #0080ff;
   color: white;
   text-align: center;
+  cursor: pointer;
 `;
 
 const NavItemContainer = styled('div')`
   margin-left: 10px;
 `;
 
+const Side = styled('div')`
+  display: flex;
+  align-items: center;
+  height: 100%;
+`;
+
 export interface NavHeaderProps {
   activeRoute: Routes;
+  loginModalOpen: boolean;
   onNavigationChange: (route: Routes) => void;
 }
 
@@ -45,38 +55,36 @@ class NavHeader extends React.Component<NavHeaderProps, NavHeaderState> {
   }
 
   public render() {
-    const { activeRoute } = this.props;
+    const { activeRoute, loginModalOpen } = this.props;
     return (
       <Container>
-        <Logo>
-          {this.state.showSpinner ?
-            <div className='la-ball-atom la-sm'>
-              <div />
-              <div />
-              <div />
-              <div />
-            </div>
-            :
-            'fD'
-          }
-        </Logo>
-        <NavItemContainer>
-          <NavItem
-            active={activeRoute === Routes.Welcome}
-            route={Routes.Welcome}
-            onClick={this.onNavigationChange}  
+        <Side>
+          <Logo onClick={() => this.onNavigationChange(Routes.Shop)}>FD</Logo>
+          <NavItemContainer>
+            <NavItem
+              active={activeRoute === Routes.Welcome}
+              route={Routes.Welcome}
+              onClick={this.onNavigationChange}  
+            />
+            <NavItem
+              active={activeRoute === Routes.Shop}
+              route={Routes.Shop}
+              onClick={this.onNavigationChange}
+            />
+            <NavItem
+              active={activeRoute === Routes.About}
+              route={Routes.About}
+              onClick={this.onNavigationChange}  
+            />
+          </NavItemContainer>
+        </Side>
+        <Side>
+          <LoginItem
+            activeRoute={activeRoute}
+            loginModalOpen={loginModalOpen}
+            onNavigationChange={this.onNavigationChange}
           />
-          <NavItem
-            active={activeRoute === Routes.Shop}
-            route={Routes.Shop}
-            onClick={this.onNavigationChange}
-          />
-          <NavItem
-            active={activeRoute === Routes.About}
-            route={Routes.About}
-            onClick={this.onNavigationChange}  
-          />
-        </NavItemContainer>
+        </Side>
       </Container>
     );
   }

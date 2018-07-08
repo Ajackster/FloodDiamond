@@ -31,14 +31,15 @@ export interface ModalProps {
   width: number;
   height: number;
   onClose: () => void;
+  modalClass?: string;
 }
 
 class Modal extends React.Component<ModalProps> {
   public render() {
     return (
       <Container>
-        <Overlay onMouseDown={this.props.onClose} />
-        <ModalContainer width={this.props.width} height={this.props.height}>
+        <Overlay onClick={this.props.onClose} />
+        <ModalContainer width={this.props.width} height={this.props.height} className={this.props.modalClass}>
           {this.props.children}
         </ModalContainer>
       </Container>

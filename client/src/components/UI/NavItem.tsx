@@ -21,12 +21,13 @@ export interface NavItemProps {
   active: boolean;
   route: Routes;
   onClick: (route: Routes) => void;
+  text?: string;
 }
 
 class NavItem extends React.Component<NavItemProps> {
   public render() {
     return (
-      <Item active={this.props.active} onClick={this.onClick}>{this.props.route}</Item>
+      <Item active={this.props.active} onClick={this.onClick}>{this.props.text || this.props.route}</Item>
     );
   }
 

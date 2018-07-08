@@ -99,7 +99,9 @@ const ButtonContainer = styled('div')`
 
 export interface DiamondCardProps {
   id: string;
+  selectedDiamond: Diamond | null;
   onClick: (diamond: Diamond) => void;
+  onBuyClick: (diamond: Diamond) => void;
 }
 
 export interface DiamondCardState {
@@ -129,11 +131,9 @@ class DiamondCard extends React.Component<DiamondCardProps, DiamondCardState> {
               onClick={() => this.props.onClick(diamond)}
               onMouseOver={this.onMouseOver}
               onMouseLeave={this.onMouseLeave}>
-              
-                <ButtonContainer>
-                  <Button text={'Buy'} onClick={() => {}} />
-                </ButtonContainer>
-              
+              <ButtonContainer>
+                <Button text={'Buy'} onClick={() => this.props.onBuyClick(diamond)} />
+              </ButtonContainer>             
               <Price>${diamond.price}</Price>
               <ImageContainer>
                 <Image src={diamond.image} draggable={false} />

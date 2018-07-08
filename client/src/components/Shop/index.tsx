@@ -7,11 +7,13 @@ import { Diamond } from '../../lib/interfaces';
 const ContentContainer = styled('div')`
   width: fit-content;
   margin: auto;
+  max-width: 60%;
 `;
 
 export interface ShopProps {
   selectedDiamond: Diamond | null;
   onDiamondCardClick: (diamond: Diamond | null) => void;
+  onBuyClick: (diamond: Diamond | null) => void;
   onInfoModalClose: () => void;
 }
 
@@ -19,7 +21,11 @@ class Shop extends React.Component<ShopProps> {
   public render() {
     return (
       <ContentContainer>
-        <DiamondsList onClick={this.props.onDiamondCardClick} />
+        <DiamondsList
+          onClick={this.props.onDiamondCardClick}
+          onBuyClick={this.props.onBuyClick}
+          selectedDiamond={this.props.selectedDiamond}
+        />
         <InfoModal diamond={this.props.selectedDiamond} onInfoModalClose={this.props.onInfoModalClose} />
       </ContentContainer>
     );
