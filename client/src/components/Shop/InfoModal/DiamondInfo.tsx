@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-import { Diamond } from '../../lib/interfaces';
-import CollapsibleItem from '../UI/CollapsibleItem';
+import { Diamond } from '../../../lib/interfaces';
+import CollapsibleItem from '../../UI/CollapsibleItem';
 
 const Container = styled('div')`
 `;

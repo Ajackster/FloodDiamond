@@ -3,8 +3,9 @@ import styled from 'react-emotion';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import Loading from '../UI/Loading';
-import { Diamond } from '../../lib/interfaces';
+import Loading from '../../UI/Loading';
+import Button from '../../UI/Button';
+import { Diamond } from '../../../lib/interfaces';
 
 const query = gql`
   query DiamondCard($id: ID!) {
@@ -31,15 +32,18 @@ const Container = styled('div')`
   border-radius: 5px;
   transition: border-radius 0.2s, box-shadow 0.2s;
   cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
   &:hover {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
     border-radius: 10px;
+    .ui-button-view {
+      background-color: #0080ff;
+      color: white;
+    }
     .diamond-name .fa-arrow-right {
       color: #0080ff;
     }
-  }
-  &:active {
-    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.4);
   }
 `;
 
@@ -47,7 +51,7 @@ const Price = styled('div')`
   position: absolute;
   top: 5px;
   left: 5px;
-  color: #0080ff;
+  color: #666;
   font-weight: bold;
 `;
 
@@ -75,12 +79,29 @@ const Name = styled('div')`
   height: 45px;
 `;
 
+const ButtonContainer = styled('div')`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+`;
+
 export interface DiamondCardProps {
   id: string;
   onClick: (diamond: Diamond) => void;
 }
 
-class DiamondCard extends React.Component<DiamondCardProps> {
+export interface DiamondCardState {
+  mouseOver: boolean;
+}
+
+class DiamondCard extends React.Component<DiamondCardProps, DiamondCardState> {
+  constructor(props: DiamondCardProps) {
+    super(props);
+    this.state = {
+      mouseOver: false,
+    };
+  }
+
   public render() {
     return (
       <Query query={query} variables={{ id: this.props.id }}>
@@ -92,10 +113,18 @@ class DiamondCard extends React.Component<DiamondCardProps> {
           }
           const diamond = data.diamond;
           return (
-            <Container onClick={() => this.props.onClick(diamond)}>
+            <Container
+              onClick={() => this.props.onClick(diamond)}
+              onMouseOver={this.onMouseOver}
+              onMouseLeave={this.onMouseLeave}>
+              
+                <ButtonContainer>
+                  <Button text={'Buy'} onClick={() => {}} />
+                </ButtonContainer>
+              
               <Price>${diamond.price}</Price>
               <ImageContainer>
-                <Image src={diamond.image} />
+                <Image src={diamond.image} draggable={false} />
               </ImageContainer>
               <Name className='diamond-name'>
                 {diamond.name}
@@ -106,6 +135,14 @@ class DiamondCard extends React.Component<DiamondCardProps> {
         }}
       </Query>
     );
+  }
+
+  private onMouseOver = () => {
+    this.setState({ mouseOver: true });
+  }
+
+  private onMouseLeave = () => {
+    this.setState({ mouseOver: false });
   }
 }
 

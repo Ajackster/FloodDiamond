@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-import Modal from '../UI/Modal';
+import Modal from '../../UI/Modal';
 import DiamondInfo from './DiamondInfo';
-import { Diamond } from '../../lib/interfaces';
-import CollapsibleItem from '../UI/CollapsibleItem';
+import { Diamond } from '../../../lib/interfaces';
+import CollapsibleItem from '../../UI/CollapsibleItem';
 import SupplierInfo from './SupplierInfo';
 
 const ModalContent = styled('div')`

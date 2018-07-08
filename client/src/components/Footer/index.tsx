@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-import IconLink from './IconLink';
+import IconLink from '../UI/IconLink';
 
 const Container = styled('div')`
   position: fixed;

@@ -3,7 +3,7 @@ import styled from 'react-emotion';
 import { graphql, ChildProps } from 'react-apollo';
 import gql from 'graphql-tag';
 import DiamondCard from './DiamondCard';
-import { Diamond } from '../../lib/interfaces';
+import { Diamond } from '../../../lib/interfaces';
 
 const Container = styled('div')`
   display: flex;

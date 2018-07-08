@@ -1,5 +1,7 @@
 import * as React from 'react';
 import styled from 'react-emotion';
+import { Routes } from '../../lib/routes';
+import NavItem from '../UI/NavItem';
 
 const Container = styled('div')`
   display: flex;
@@ -24,34 +26,33 @@ const NavItemContainer = styled('div')`
   margin-left: 10px;
 `;
 
-const NavItem = styled('div')`
-  display: inline-block;
-  color: #666;
-  font-weight: bold;
-  font-size: 14px;
-  margin-right: 10px;
-  line-height: 20px;
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
-  &:hover {
-    color: #0080ff;
-    border-bottom: 2px solid #0080ff;
-  }
-`;
-
 export interface NavHeaderProps {
-
+  activeRoute: Routes;
+  onNavigationChange: (route: Routes) => void;
 }
 
 class NavHeader extends React.Component<NavHeaderProps> {
   public render() {
+    const { activeRoute } = this.props;
     return (
       <Container>
         <Logo>fD</Logo>
         <NavItemContainer>
-          <NavItem>Welcome</NavItem>
-          <NavItem>Shop</NavItem>
-          <NavItem>About</NavItem>
+          <NavItem
+            active={activeRoute === Routes.Welcome}
+            route={Routes.Welcome}
+            onClick={this.props.onNavigationChange}  
+          />
+          <NavItem
+            active={activeRoute === Routes.Shop}
+            route={Routes.Shop}
+            onClick={this.props.onNavigationChange}
+          />
+          <NavItem
+            active={activeRoute === Routes.About}
+            route={Routes.About}
+            onClick={this.props.onNavigationChange}  
+          />
         </NavItemContainer>
       </Container>
     );

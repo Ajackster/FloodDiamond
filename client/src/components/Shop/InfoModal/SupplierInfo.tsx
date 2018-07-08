@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'react-emotion';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-import Loading from '../UI/Loading';
+import Loading from '../../UI/Loading';
 
 const query = gql`
   query InfoModal($id: ID!) {
