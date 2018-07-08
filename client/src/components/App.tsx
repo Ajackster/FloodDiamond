@@ -10,6 +10,7 @@ import Welcome from './Welcome';
 import Shop from './Shop';
 import LoginModal from './LoginModal';
 import Certificate from './Certificate';
+import About from './About';
 
 const Container = styled('div')`
   width: 100%;
@@ -68,6 +69,9 @@ class App extends React.Component<AppProps, AppState> {
       };
       case Routes.Certificate: {
         return <Certificate certificate={this.state.certData as CertificateInfo} />
+      };
+      case Routes.About: {
+        return <About />;
       };
       case Routes.Shop: {
         return (
