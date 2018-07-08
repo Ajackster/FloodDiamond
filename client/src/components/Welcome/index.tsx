@@ -29,6 +29,8 @@ const WelcomeText = styled('div')`
   opacity: 0;
   -webkit-animation: ${WelcomeTextAnimation} 0.7s forwards;
   animation: ${WelcomeTextAnimation} 0.7s forwards;
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
 `;
 
 const GladTextAnimation = keyframes`

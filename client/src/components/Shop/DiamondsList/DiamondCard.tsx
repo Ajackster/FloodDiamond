@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'react-emotion';
+import styled, { keyframes } from 'react-emotion';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -20,6 +20,15 @@ const query = gql`
   }
 `;
 
+const FadeInAnimation = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
 const Container = styled('div')`
   position: relative;
   display: flex;
@@ -34,6 +43,9 @@ const Container = styled('div')`
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
+  opacity: 0;
+  -webkit-animation: ${FadeInAnimation} 0.5s forwards;
+  animation: ${FadeInAnimation} 0.5s forwards;
   &:hover {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
     border-radius: 10px;

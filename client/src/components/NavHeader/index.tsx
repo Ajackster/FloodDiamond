@@ -31,32 +31,70 @@ export interface NavHeaderProps {
   onNavigationChange: (route: Routes) => void;
 }
 
-class NavHeader extends React.Component<NavHeaderProps> {
+export interface NavHeaderState {
+  showSpinner: boolean;
+}
+
+class NavHeader extends React.Component<NavHeaderProps, NavHeaderState> {
+  // private spinnerTimeout: number;
+  constructor(props: NavHeaderProps) {
+    super(props);
+    this.state = {
+      showSpinner: false,
+    };
+  }
+
   public render() {
     const { activeRoute } = this.props;
     return (
       <Container>
-        <Logo>fD</Logo>
+        <Logo>
+          {this.state.showSpinner ?
+            <div className='la-ball-atom la-sm'>
+              <div />
+              <div />
+              <div />
+              <div />
+            </div>
+            :
+            'fD'
+          }
+        </Logo>
         <NavItemContainer>
           <NavItem
             active={activeRoute === Routes.Welcome}
             route={Routes.Welcome}
-            onClick={this.props.onNavigationChange}  
+            onClick={this.onNavigationChange}  
           />
           <NavItem
             active={activeRoute === Routes.Shop}
             route={Routes.Shop}
-            onClick={this.props.onNavigationChange}
+            onClick={this.onNavigationChange}
           />
           <NavItem
             active={activeRoute === Routes.About}
             route={Routes.About}
-            onClick={this.props.onNavigationChange}  
+            onClick={this.onNavigationChange}  
           />
         </NavItemContainer>
       </Container>
     );
   }
+
+  private onNavigationChange = (route: Routes) => {
+    this.props.onNavigationChange(route);
+    // this.handleSpinner();
+  }
+
+  // private handleSpinner = () => {
+  //   if (this.spinnerTimeout) {
+  //     clearTimeout(this.spinnerTimeout);
+  //   }
+  //   this.setState({ showSpinner: true });
+  //   this.spinnerTimeout = window.setTimeout(() => {
+  //     this.setState({ showSpinner: false });
+  //   }, 400);
+  // }
 }
 
 export default NavHeader;

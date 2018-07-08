@@ -71,6 +71,17 @@ class App extends React.Component<AppProps, AppState> {
     }
   }
 
+  public componentDidMount() {
+    this.initRoute();
+  }
+
+  private initRoute = () => {
+    const lastRoute = localStorage.getItem('last-route');
+    if (lastRoute) {
+      this.setState({ activeRoute: lastRoute as Routes });
+    }
+  }
+
   private onDiamondCardClick = (diamond: Diamond) => {
     this.setState({ selectedDiamond: diamond });
   }
@@ -81,6 +92,7 @@ class App extends React.Component<AppProps, AppState> {
 
   private onNavigationChange = (route: Routes) => {
     if (route === this.state.activeRoute) return;
+    localStorage.setItem('last-route', route);
     this.setState({ activeRoute: route });
   }
 }

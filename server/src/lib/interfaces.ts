@@ -31,3 +31,11 @@ export interface User {
   username: string;
   password: string;
 }
+
+export interface Receipt {
+  _id: mongodb.ObjectId;
+  name: string;
+  supplierName: string;
+  supplierLocation: string;
+  diamondName: string;
+}

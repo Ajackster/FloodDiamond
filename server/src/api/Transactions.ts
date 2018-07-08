@@ -19,13 +19,13 @@ export async function handleTransaction(req: Request, res: Response) {
   const diamondId = req.body.diamondId;
 
   if (!userId || !supplierId || !diamondId) {
-    res.send(400);
+    res.sendStatus(400);
     return;
   }
 
   const transaction = await insertTransacton(userId, supplierId, diamondId);
   if (!transaction.result.ok) {
-    res.send(500);
+    res.sendStatus(500);
     return;
   }
 
@@ -33,9 +33,17 @@ export async function handleTransaction(req: Request, res: Response) {
   const supplier = await getSupplier(supplierId);
   const diamond = await getDiamond(diamondId);
 
-  res.send({
-    user,
-    supplier,
-    diamond,
-  });
+  if (user === null || supplier === null || diamond === null) {
+    res.sendStatus(404);
+    return;
+  }
+
+  const receiptInfo = {
+    name: user.name,
+    supplierName: supplier.name,
+    supplierLocation: supplier.location,
+    diamondName: supplier.name,
+  };
+
+  res.send(receiptInfo);
 }

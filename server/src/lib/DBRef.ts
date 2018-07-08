@@ -1,5 +1,5 @@
 import * as mongodb from 'mongodb';
-import { Diamond, Supplier, Transaction, User } from './interfaces';
+import { Diamond, Supplier, Transaction, User, Receipt } from './interfaces';
 
 const DB_NAME = 'FloodDiamond';
 const DIAMOND_COLLECTION = 'diamonds';
@@ -12,6 +12,7 @@ export class DBRef {
   public static diamondsCollection: mongodb.Collection<Diamond>;
   public static suppliersCollection: mongodb.Collection<Supplier>;
   public static transactionsCollection: mongodb.Collection<Transaction>;
+  public static receiptCollecion: mongodb.Collection<Receipt>;
   public static usersCollection: mongodb.Collection<User>;
 }
 
