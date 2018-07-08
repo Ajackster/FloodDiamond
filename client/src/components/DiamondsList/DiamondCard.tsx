@@ -47,7 +47,7 @@ const Price = styled('div')`
   position: absolute;
   top: 5px;
   left: 5px;
-  color: #008543;
+  color: #0080ff;
 `;
 
 const ImageContainer = styled('div')`
