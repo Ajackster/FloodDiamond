@@ -3,6 +3,7 @@ import styled from 'react-emotion';
 
 import { Diamond } from '../lib/interfaces';
 import NavHeader from './NavHeader';
+import Footer from './Footer';
 import DiamondsList from './DiamondsList';
 import InfoModal from './InfoModal';
 
@@ -12,7 +13,6 @@ const Container = styled('div')`
 `;
 
 const ContentContainer = styled('div')`
-  height: calc(100% - 50px);
   width: fit-content;
   margin: auto;
 `;
@@ -42,6 +42,7 @@ class App extends React.Component<AppProps, AppState> {
           <DiamondsList onClick={this.onDiamondCardClick} />
           <InfoModal diamond={this.state.selectedDiamond} onInfoModalClose={this.onInfoModalClose} />
         </ContentContainer>
+        <Footer />
       </Container>
     );
   }

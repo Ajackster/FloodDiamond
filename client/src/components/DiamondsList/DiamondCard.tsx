@@ -48,6 +48,7 @@ const Price = styled('div')`
   top: 5px;
   left: 5px;
   color: #0080ff;
+  font-weight: bold;
 `;
 
 const ImageContainer = styled('div')`
@@ -65,8 +66,8 @@ const Image = styled('img')`
 const Name = styled('div')`
   font-size: 16px;
   font-weight: bold;
-  color: #444;
-  border-top: 1px solid #ccc;
+  color: #666;
+  border-top: 1px solid #eee;
   display: flex;
   align-items: center;
   justify-content: center;

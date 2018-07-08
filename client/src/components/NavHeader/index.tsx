@@ -4,15 +4,16 @@ import styled from 'react-emotion';
 const Container = styled('div')`
   display: flex;
   align-items: center;
-  width: 100%;
   height: 50px;
   margin-bottom: 5px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  padding: 0 5px;
+  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.1);
 `;
 
 const Logo = styled('div')`
   width: 30px;
   height: 30px;
+  line-height: 30px;
   border-radius: 10px;
   background-color: #0080ff;
   color: white;
@@ -25,7 +26,7 @@ const NavItemContainer = styled('div')`
 
 const NavItem = styled('div')`
   display: inline-block;
-  color: #444;
+  color: #666;
   font-weight: bold;
   font-size: 14px;
   margin-right: 10px;
