@@ -1,5 +1,6 @@
 import { GraphQLObjectType } from 'graphql';
 import { diamonds, diamond } from './DiamondQueries';
+import { suppliers, supplier } from './SupplierQueries';
 
 const FloodDiamondRootQuery = new GraphQLObjectType({
   name: 'FloodDiamond',
@@ -7,6 +8,8 @@ const FloodDiamondRootQuery = new GraphQLObjectType({
   fields: () => ({
     diamonds,
     diamond,
+    suppliers,
+    supplier,
   })
 });
 

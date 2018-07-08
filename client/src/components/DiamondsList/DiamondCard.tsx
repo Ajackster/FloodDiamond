@@ -4,6 +4,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import Loading from '../UI/Loading';
+import { Diamond } from '../../lib/interfaces';
 
 const query = gql`
   query DiamondCard($id: ID!) {
@@ -13,11 +14,13 @@ const query = gql`
       name
       carat
       description
+      price
     }
   }
 `;
 
 const Container = styled('div')`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,10 +34,20 @@ const Container = styled('div')`
   &:hover {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
     border-radius: 10px;
-    .diamond-name {
-      color: #96c7ee;
+    .diamond-name .fa-arrow-right {
+      color: #0080ff;
     }
   }
+  &:active {
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.4);
+  }
+`;
+
+const Price = styled('div')`
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: #008543;
 `;
 
 const ImageContainer = styled('div')`
@@ -45,17 +58,25 @@ const ImageContainer = styled('div')`
 
 const Image = styled('img')`
   width: 150px;
-  max-height: 150px;
+  min-height: 150px;
   object-fit: contain;
 `;
 
 const Name = styled('div')`
-  font-size: 20px;
+  font-size: 16px;
+  font-weight: bold;
   color: #444;
+  border-top: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 45px;
 `;
 
 export interface DiamondCardProps {
   id: string;
+  onClick: (diamond: Diamond) => void;
 }
 
 class DiamondCard extends React.Component<DiamondCardProps> {
@@ -70,7 +91,8 @@ class DiamondCard extends React.Component<DiamondCardProps> {
           }
           const diamond = data.diamond;
           return (
-            <Container>
+            <Container onClick={() => this.props.onClick(diamond)}>
+              <Price>${diamond.price}</Price>
               <ImageContainer>
                 <Image src={diamond.image} />
               </ImageContainer>
