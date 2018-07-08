@@ -8,7 +8,6 @@ import NavHeader from './NavHeader';
 import Footer from './Footer';
 import Welcome from './Welcome';
 import Shop from './Shop';
-import Certificate from './Shop/Certificate';
 import LoginModal from './LoginModal';
 
 const Container = styled('div')`
@@ -74,11 +73,6 @@ class App extends React.Component<AppProps, AppState> {
           />
         );
       };
-      case Routes.Certificate: {
-        return (
-          <Certificate diamond={this.state.selectedDiamond as Diamond} />
-        );
-      };
       default: {
         return (
           <div></div>
@@ -103,6 +97,7 @@ class App extends React.Component<AppProps, AppState> {
   }
 
   private onInfoModalClose = () => {
+    console.log('on modal close!');
     this.setState({ selectedDiamond: null });
   }
 

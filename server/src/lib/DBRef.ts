@@ -1,10 +1,11 @@
 import * as mongodb from 'mongodb';
-import { Diamond, Supplier, Transaction, User, Receipt } from './interfaces';
+import { Diamond, Supplier, Transaction, User, Certificate } from './interfaces';
 
 const DB_NAME = 'FloodDiamond';
 const DIAMOND_COLLECTION = 'diamonds';
 const SUPPLIER_COLLECTION = 'suppliers';
 const TRANSACTIONS_COLLECTION = 'transactions';
+const CERTIFICATES_COLLECTION = 'certificates';
 const USERS_COLLECTION = 'users';
 
 export class DBRef {
@@ -12,7 +13,7 @@ export class DBRef {
   public static diamondsCollection: mongodb.Collection<Diamond>;
   public static suppliersCollection: mongodb.Collection<Supplier>;
   public static transactionsCollection: mongodb.Collection<Transaction>;
-  public static receiptCollecion: mongodb.Collection<Receipt>;
+  public static certificateCollecion: mongodb.Collection<Certificate>;
   public static usersCollection: mongodb.Collection<User>;
 }
 
@@ -23,6 +24,7 @@ export function connectToMongo() {
     DBRef.diamondsCollection = db.db(DB_NAME).collection(DIAMOND_COLLECTION);
     DBRef.suppliersCollection = db.db(DB_NAME).collection(SUPPLIER_COLLECTION);
     DBRef.transactionsCollection = db.db(DB_NAME).collection(TRANSACTIONS_COLLECTION);
+    DBRef.certificateCollecion = db.db(DB_NAME).collection(CERTIFICATES_COLLECTION);
     DBRef.usersCollection = db.db(DB_NAME).collection(USERS_COLLECTION);
   });
 }

@@ -1,7 +1,18 @@
 import * as React from 'react';
-import styled from 'react-emotion';
+import styled, { keyframes } from 'react-emotion';
+
+const FadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 const Container = styled('div')`
+  -webkit-animation: ${FadeIn} 0.2s forwards;
+  animation: ${FadeIn} 0.2s forwards;
 `;
 
 const Overlay = styled('div')`

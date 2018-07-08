@@ -2,6 +2,7 @@ import { GraphQLObjectType } from 'graphql';
 import { diamonds, diamond } from './DiamondQueries';
 import { suppliers, supplier } from './SupplierQueries';
 import { user } from './UserQueries';
+import { myCertificates, certificate } from './CertificateQueries';
 
 const FloodDiamondRootQuery = new GraphQLObjectType({
   name: 'FloodDiamond',
@@ -12,6 +13,8 @@ const FloodDiamondRootQuery = new GraphQLObjectType({
     suppliers,
     supplier,
     user,
+    myCertificates,
+    certificate,
   })
 });
 

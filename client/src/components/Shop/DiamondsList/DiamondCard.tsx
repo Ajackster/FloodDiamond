@@ -10,6 +10,7 @@ import { Diamond } from '../../../lib/interfaces';
 const query = gql`
   query DiamondCard($id: ID!) {
     diamond(id: $id) {
+      _id
       supplierId
       image
       name
@@ -64,6 +65,15 @@ const Price = styled('div')`
   top: 5px;
   left: 5px;
   color: #666;
+  font-weight: bold;
+`;
+
+const Weight = styled('div')`
+  position: absolute;
+  top: 25px;
+  left: 5px;
+  color: #888;
+  font-size: 12px;
   font-weight: bold;
 `;
 
@@ -133,8 +143,9 @@ class DiamondCard extends React.Component<DiamondCardProps, DiamondCardState> {
               onMouseLeave={this.onMouseLeave}>
               <ButtonContainer>
                 <Button text={'Buy'} onClick={() => this.props.onBuyClick(diamond)} />
-              </ButtonContainer>             
-              <Price>${diamond.price}</Price>
+              </ButtonContainer>
+              <Price>{diamond.price} USD</Price>
+              <Weight>{diamond.carat} ct</Weight>
               <ImageContainer>
                 <Image src={diamond.image} draggable={false} />
               </ImageContainer>

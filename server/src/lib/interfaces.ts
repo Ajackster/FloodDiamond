@@ -32,8 +32,10 @@ export interface User {
   password: string;
 }
 
-export interface Receipt {
+export interface Certificate {
   _id: mongodb.ObjectId;
+  transactionId: mongodb.ObjectId;
+  userId: mongodb.ObjectId;
   name: string;
   supplierName: string;
   supplierLocation: string;

@@ -1,31 +1,26 @@
 import * as React from 'react';
 import styled from 'react-emotion';
 import { Diamond } from '../../../lib/interfaces';
-import CollapsibleItem from '../../UI/CollapsibleItem';
+import DescriptiveField from '../../UI/DescriptiveField';
 
 const Container = styled('div')`
 `;
 
-const Name = styled('div')`
-  font-size: 20px;
-  color: #444;
-  text-align: center;
+const ImageContainer = styled('div')`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Image = styled('img')`
-  width: 90%;
-  max-height: 90%;
+  width: 200px;
+  max-height: 200px;
   object-fit: contain;
 `;
 
-const Price = styled('div')`
-  font-size: 18px;
-  color: #0080ff;
-`;
-
 const Description = styled('div')`
-  font-size: 16px;
-  color: #222;
+  font-size: 14px;
+  color: #888;
 `;
 
 export interface DiamondInfoProps {
@@ -37,14 +32,14 @@ class DiamondInfo extends React.Component<DiamondInfoProps> {
     const { diamond } = this.props;
     return (
       <Container>
-        <Name>{diamond.name}</Name>
-        <Image src={diamond.image} />
-        <CollapsibleItem title='Price'>
-          <Price>The price of this diamond is: ${diamond.price}</Price>
-        </CollapsibleItem>
-        <CollapsibleItem title='Description'>
+        <ImageContainer>
+          <Image src={diamond.image} draggable={false} />
+        </ImageContainer>
+        <DescriptiveField header='About the diamond'>
+          <Description><b>Price:</b> {diamond.price} USD</Description>
+          <Description><b>Weight:</b> {diamond.carat} ct</Description>
           <Description>{diamond.description}</Description>
-        </CollapsibleItem>
+        </DescriptiveField>
       </Container>
     );
   }

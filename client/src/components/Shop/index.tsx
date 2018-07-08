@@ -26,7 +26,11 @@ class Shop extends React.Component<ShopProps> {
           onBuyClick={this.props.onBuyClick}
           selectedDiamond={this.props.selectedDiamond}
         />
-        <InfoModal diamond={this.props.selectedDiamond} onInfoModalClose={this.props.onInfoModalClose} />
+        <InfoModal
+          diamond={this.props.selectedDiamond}
+          onBuyClick={this.props.onBuyClick}
+          onInfoModalClose={this.props.onInfoModalClose}
+        />
       </ContentContainer>
     );
   }

@@ -4,6 +4,7 @@ import { DBRef } from '../lib/DBRef';
 import { getUser } from './User';
 import { getDiamond } from './Diamonds';
 import { getSupplier } from './Supplier';
+import { insertCertificate } from './Certificates';
 
 export async function insertTransacton(userId: string, supplierId: string, diamondId: string) {
   return await DBRef.transactionsCollection.insert({
@@ -38,12 +39,14 @@ export async function handleTransaction(req: Request, res: Response) {
     return;
   }
 
-  const receiptInfo = {
+  const certificateInfo = {
+    transactionId: transaction.insertedId,
+    userId: new mongodb.ObjectId(userId),
     name: user.name,
     supplierName: supplier.name,
     supplierLocation: supplier.location,
     diamondName: supplier.name,
   };
-
-  res.send(receiptInfo);
+  const certificate = await insertCertificate(certificateInfo);
+  res.send({ _id: certificate.insertedId, ...certificateInfo });
 }
